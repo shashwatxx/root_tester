@@ -1,3 +1,11 @@
+## 0.0.3
+
+- Added documentation in the public api
+
+## 0.0.2
+
+- Added changelog and homepage
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Implemented platform-specific device/OS properties
