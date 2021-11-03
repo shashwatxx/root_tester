@@ -5,6 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
+import android.content.Context;
+import android.content.ContextWrapper;
+import io.flutter.plugin.common.BinaryMessenger;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -22,6 +25,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 import me.shashwatmishra.root_tester.ConstantCollections;
 
@@ -32,15 +36,28 @@ public class RootTesterPlugin implements FlutterPlugin, MethodCallHandler {
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private MethodChannel channel;
+  private Context applicationContext;
+  
+
+  
+
 
   @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "root_tester");
+  public void onAttachedToEngine( FlutterPluginBinding binding) {
+    onAttachedToEngine(binding.getApplicationContext(), binding.getBinaryMessenger());
+  }
+
+  private void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
+    this.applicationContext = applicationContext;
+    channel = new MethodChannel(messenger, "root_tester");
+    
     channel.setMethodCallHandler(this);
   }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    applicationContext = null;
+    channel = null;
     channel.setMethodCallHandler(null);
   }
 
@@ -188,7 +205,8 @@ public class RootTesterPlugin implements FlutterPlugin, MethodCallHandler {
 
   private boolean isAnyPackageFromListInstalled(ArrayList<String> pkg){
     boolean result = false;
-    PackageManager pm = vRegistrar.activeContext().getPackageManager();
+    PackageManager pm =applicationContext.getPackageManager();
+      // .getPackageManager();
     for(String packageName : pkg){
       try{
         pm.getPackageInfo(packageName,0);
