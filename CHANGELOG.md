@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Fixed Context in android Native
+
 ## 0.0.3
 
 - Added documentation in the public api

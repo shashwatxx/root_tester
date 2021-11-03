@@ -1,7 +1,7 @@
 name: root_tester
 description: A Flutter plugin to check if device is rooted or not.only for Android & iOS Devices.
 
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/shashwatxx/root_tester
 
 environment:
