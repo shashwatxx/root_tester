@@ -18,6 +18,9 @@
 }
 
 - (bool)ishpBodong{
+#if TARGET_IPHONE_SIMULATOR
+    return NO;
+#else
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/blackra1n.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/FakeCarrier.app"]
@@ -54,7 +57,7 @@
        || (f = fopen("/usr/sbin/sshd","r"))
        || (f = fopen("/etc/apt","r"))
        || (f = fopen("/usr/bin/ssh","r"))
-    ){
+       ){
         fclose(f);
         return YES;
     }
@@ -68,6 +71,7 @@
         return YES;
     }
     return NO;
+#endif
 }
 
 @end
