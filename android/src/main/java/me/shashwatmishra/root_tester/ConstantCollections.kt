@@ -1,8 +1,7 @@
-package me.shashwatmishra.root_tester;
+package me.shashwatmishra.root_tester
 
-public final class ConstantCollections{
-
-    public static final String[] rootsAppPackage = {
+object ConstantCollections {
+    val rootsAppPackage = arrayOf(
         "com.noshufou.android.su",
         "com.noshufou.android.su.elite",
         "eu.chainfire.supersu",
@@ -10,9 +9,8 @@ public final class ConstantCollections{
         "com.thirdparty.superuser",
         "com.yellowes.su",
         "com.topjohnwu.magisk"
-    };
-
-    public static final String[] dangerousListApps ={
+    )
+    val dangerousListApps = arrayOf(
         "com.koushikdutta.rommanager",
         "com.koushikdutta.rommanager.license",
         "com.dimonvideo.luckypatcher",
@@ -21,9 +19,8 @@ public final class ConstantCollections{
         "com.ramdroid.appquarantinepro",
         "com.android.vending.billing.InAppBillingService.COIN",
         "com.chelpus.luckypatcher"
-    };
-
-    public static final String[] rootCloakingApps ={
+    )
+    val rootCloakingApps = arrayOf(
         "com.devadvance.rootcloak",
         "com.devadvance.rootcloakplus",
         "de.robv.android.xposed.installer",
@@ -33,9 +30,8 @@ public final class ConstantCollections{
         "com.amphoras.hidemyrootadfree",
         "com.formyhm.hiderootPremium",
         "com.formyhm.hideroot"
-    };
-
-    public static final String[] superUserPath = {
+    )
+    val superUserPath = arrayOf(
         "/data/local/",
         "/data/local/bin/",
         "/data/local/xbin/",
@@ -50,15 +46,14 @@ public final class ConstantCollections{
         "/cache",
         "/data",
         "/dev"
-    };
-
-    public static final String[] notWritablePath ={
+    )
+    val notWritablePath = arrayOf(
         "/system",
         "/system/bin",
         "/system/sbin",
         "/system/xbin",
         "/vendor/bin",
         "/sbin",
-        "/etc",
-    };
+        "/etc"
+    )
 }
