@@ -16,5 +16,5 @@ import 'package:root_tester/root_tester.dart';
 ```
 #### Call funtion isDeviceRooted
 ```
-bool isDeviceRooted=await RootChecker.isDeviceRooted();
+bool isDeviceRooted=await RootTester.isDeviceRooted;
 ```
